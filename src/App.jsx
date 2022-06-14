@@ -1,13 +1,14 @@
 import { useState } from 'react'
-import {Headerpresupuesto as Header}from './components/Headerpresupuesto'
+import Headerpresupuesto from './components/Headerpresupuesto'
+
 
 
 function App() {
 
   return (
     <div >
-          
-          <Header/>
+           <Headerpresupuesto/>
+        
     </div>
   )
 }
