@@ -4,10 +4,14 @@ import Headerpresupuesto from './components/Headerpresupuesto'
 
 
 function App() {
-
+  const [presupuesto,setPresupuesto]=useState(0)
   return (
     <div >
-           <Headerpresupuesto/>
+           <Headerpresupuesto
+           presupuesto={presupuesto}
+           setPresupuesto={setPresupuesto}
+           />
+
         
     </div>
   )
