@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Error_alert = () => {
+const mensaje = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Error_alert = () => {
   )
 }
 
-export default Error_alert
+export default mensaje
