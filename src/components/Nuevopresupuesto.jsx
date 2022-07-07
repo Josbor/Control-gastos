@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-import Mensaje from './Mensaje'
+import MensajeAlerta from './MensajeAlerta'
 
 const Nuevopresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido}) => {
   const [mensaje,setMensaje]=useState('')
@@ -34,7 +34,7 @@ const Nuevopresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido}) => 
             </div>
 
             <input type="submit" value="añadir" />
-          {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>} 
+          {mensaje && <MensajeAlerta tipo='error'>{mensaje}</MensajeAlerta>} 
       </form>
      
     </div>

@@ -2,7 +2,7 @@
 import {useState} from 'react'
 import React from 'react'
 import Cerrarbtn  from '../img/cerrar.svg'
-import Mensaje from './Mensaje'
+import MensajeAlerta from './MensajeAlerta'
 
 
 
@@ -52,7 +52,7 @@ const Modal = ({animar,setAnimar,presupuesto,setModal,guardargasto}) => {
            </div>
            <form  className={`formulario ${animar?'animar':'cerrar'}`} onSubmit={handlegasto}>
               <legend>Nuevo Gasto</legend>
-              {alerta&&<Mensaje tipo='error'>{alerta}</Mensaje>}
+              {alerta&&<MensajeAlerta tipo='error'>{alerta}</MensajeAlerta>}
               <div className='campo'>
                 <label htmlFor='nombre' >Nombre Gasto</label>
                 <input id="nombre" type="text" placeholder='Añade el nombre del Gasto' value={nombre} onChange={(e)=> setNombre(e.target.value)}/>
