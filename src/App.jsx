@@ -13,8 +13,20 @@ function App() {
   const [modal,setModal]=useState(false);
   const [animar,setAnimar]=useState(false);
   const [gastos,setGastos]=useState([]);
+  const [editargasto,setEditargasto]=useState({})
   
 
+  useEffect(() => {
+   if(Object.keys(editargasto).length > 0){
+    handlemodal()
+   }
+  }, [editargasto]);
+
+  const eliminargasto=(id)=>{
+    const nuevosgastos=gastos.filter(gasto=>gasto.id!==id)
+    setGastos(nuevosgastos)
+  }
+ 
   const handlemodal=()=>
   {
     setModal(true)
@@ -27,13 +39,27 @@ function App() {
   }
     
   const guardargasto=(gasto)=>{
-    gasto.id=generarId();
-    gasto.fecha=Date.now()
-    setGastos([...gastos,gasto]);
+    if(Object.keys(editargasto).length > 0){
+      const gastoseditado=gastos.map((gastos)=>{
+        if (gastos.id===gasto.id){
+          
+          return gasto
+        }else {return gastos}
+        
+      })
+
+      setGastos(gastoseditado)
+     }else{
+      gasto.id=generarId();
+      gasto.fecha=Date.now()
+      setGastos([...gastos,gasto]);
+     }
+   
    
     }
+   
   return (
-    <div >
+    <div  className={modal?'fijar':''}>
         
            <Headerpresupuesto
            presupuesto={presupuesto}// enviando datos mediante props
@@ -53,6 +79,9 @@ function App() {
             <main>
                 <ListadoGastos
                 gastos={gastos}
+                editargasto={editargasto}
+                setEditargasto={setEditargasto}
+                eliminargasto={eliminargasto}
                 />
            </main>
            <div className='nuevo-gasto'>
@@ -74,6 +103,8 @@ function App() {
                      setAnimar={setAnimar}
                      presupuesto={presupuesto}
                      guardargasto={guardargasto}
+                     editargasto={editargasto}
+                     setEditargasto={setEditargasto}
                      />}
     </div>
   )

@@ -1,5 +1,5 @@
 
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import React from 'react'
 import Cerrarbtn  from '../img/cerrar.svg'
 import MensajeAlerta from './MensajeAlerta'
@@ -8,20 +8,41 @@ import MensajeAlerta from './MensajeAlerta'
 
 
 
-const Modal = ({animar,setAnimar,presupuesto,setModal,guardargasto}) => {
+const Modal = ({animar,
+                setAnimar,
+                presupuesto,
+                setModal,
+                guardargasto,
+                setEditargasto,
+                editargasto
+                }) => {
     
 
     const [nombre, setNombre]=useState('');
     const [cantidad,setCantidad]=useState(0);
     const [categoria,setCategoria]=useState('');
+    const [fecha,setFecha]=useState('');
+    const [id,setId]=useState('');
     const [alerta,setAlerta]=useState('');
+                  
     const handlecerrar=()=>{
         
         setAnimar(false);
         setTimeout(()=>{
           setModal(false);
+          setEditargasto({})
         },500)
     }
+
+    useEffect(() => {
+      if(Object.keys(editargasto).length > 0){
+          setNombre(editargasto.nombre)
+          setCantidad(editargasto.cantidad)
+          setCategoria(editargasto.categoria)
+          setFecha(editargasto.fecha)
+          setId(editargasto.id)
+       }
+    }, [editargasto]);
 
     const handlegasto=(e)=>{
       e.preventDefault()
@@ -38,7 +59,7 @@ const Modal = ({animar,setAnimar,presupuesto,setModal,guardargasto}) => {
          return
       }
       setAlerta('')
-      guardargasto({nombre,cantidad,categoria})
+      guardargasto({nombre,cantidad,categoria,id,fecha})
       handlecerrar()
      }
     
@@ -63,7 +84,7 @@ const Modal = ({animar,setAnimar,presupuesto,setModal,guardargasto}) => {
               </div>
               <div className='campo'>
                 <label htmlFor="categoria">Categoria</label>
-                <select name="categoria" id="categoria" onChange={e=>setCategoria(e.target.value)}>
+                <select name="categoria" id="categoria" value={categoria} onChange={e=>setCategoria(e.target.value)}>
                       <option value="">-- Seleccione --</option>
                       <option value="Ahorro">Ahorro</option>
                       <option value="Comida">Comida</option>

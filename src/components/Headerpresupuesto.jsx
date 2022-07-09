@@ -2,6 +2,7 @@
 import ControlPresupuesto from './ControlPresupuesto'
 import Nuevopresupuesto from './Nuevopresupuesto'
 
+
 const Headerpresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,presupuestoValido,gastos}) => {
  
   
