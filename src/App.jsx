@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import  {useState}  from 'react'
+import FiltroGastos from './components/FiltroGastos'
 import Headerpresupuesto from './components/Headerpresupuesto'
 import ListadoGastos from './components/ListadoGastos'
 import Modal from './components/Modal'
@@ -14,6 +15,7 @@ function App() {
   const [animar,setAnimar]=useState(false);
   const [gastos,setGastos]=useState([]);
   const [editargasto,setEditargasto]=useState({})
+  const [categoriafiltro,setCategoriafiltro]=useState('')
   
 
   useEffect(() => {
@@ -77,8 +79,11 @@ function App() {
            presupuestoValido&&(
             <>
             <main>
+                <FiltroGastos
+                setCategoriafiltro={setCategoriafiltro}
+                />
                 <ListadoGastos
-                gastos={gastos}
+                gastos={categoriafiltro==''?gastos:gastos.filter((gastos)=>gastos.categoria===categoriafiltro)}
                 editargasto={editargasto}
                 setEditargasto={setEditargasto}
                 eliminargasto={eliminargasto}

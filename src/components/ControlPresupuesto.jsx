@@ -9,11 +9,9 @@ const ControlPresupuesto = ({presupuesto,gastos}) => {
   const [gastado,setGastado]=useState(0)
   const[porcentaje,setPorcentaje]=useState('')
   const[porcentajecolor,setPorcentajecolor]=useState('')
-   // const gastado=gastos.reduce((total,actual)=>total+actual.cantidad,0)
-   // const disponible= presupuesto-gastado;
+  
 
   const colores=(valor)=>{
-        
     
           if (valor>=0&&valor<=25)
             {setPorcentajecolor('#50f690')}
@@ -25,13 +23,7 @@ const ControlPresupuesto = ({presupuesto,gastos}) => {
             {setPorcentajecolor('#F65050')}
           else
             {setPorcentajecolor('#50f690')}
-         
-     
-         
-      
-
-
-  }
+   }
    useEffect(() => {
         
         const totalgastado=gastos.reduce((total,actual)=>total+actual.cantidad,0)
