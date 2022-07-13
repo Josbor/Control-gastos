@@ -20,6 +20,7 @@ const Headerpresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,pres
       presupuesto={presupuesto}
       setPresupuesto={setPresupuesto}
       setPresupuestoValido={setPresupuestoValido}
+      presupuestoValido={presupuestoValido}
       />}
       
       </header>

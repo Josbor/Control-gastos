@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import { formatomoneda } from '../helpers'
+import { formatomoneda,savelocalstorage } from '../helpers'
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css'
 
@@ -36,7 +36,7 @@ const ControlPresupuesto = ({presupuesto,gastos}) => {
           colores(calculo);
           setPorcentaje(calculo)
         }, 1000);
-        
+        savelocalstorage('gastos',gastos);
     },[gastos]);
  
   

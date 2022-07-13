@@ -19,3 +19,8 @@ export const formatoFecha=(timedate,zone='es-ES')=>{
 export const formatomoneda=(cantidad)=>{ // use api de javascript para formatear el valor de la cantidad (.toLocaleString)
     return cantidad.toLocaleString('en-US',{style:'currency', currency:'USD'})
   }
+
+export const savelocalstorage=(name,content)=>{
+    localStorage.setItem(`${name}`,JSON.stringify(content))
+    console.log('guardado en el localstorage')
+}

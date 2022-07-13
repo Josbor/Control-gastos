@@ -4,16 +4,16 @@ import FiltroGastos from './components/FiltroGastos'
 import Headerpresupuesto from './components/Headerpresupuesto'
 import ListadoGastos from './components/ListadoGastos'
 import Modal from './components/Modal'
-import { generarId } from './helpers'
+import { generarId} from './helpers'
 import nuevogasto from './img/nuevo-gasto.svg'
 
 
 function App() {
-  const [presupuesto,setPresupuesto]=useState(0);
-  const [presupuestoValido,setPresupuestoValido]=useState(false) ;
+  const [presupuesto,setPresupuesto]=useState(JSON.parse(localStorage.getItem('presupuesto'))??0);
+  const [presupuestoValido,setPresupuestoValido]=useState(JSON.parse(localStorage.getItem('presupuestoValido'))??false) ;
   const [modal,setModal]=useState(false);
   const [animar,setAnimar]=useState(false);
-  const [gastos,setGastos]=useState([]);
+  const [gastos,setGastos]=useState(JSON.parse(localStorage.getItem('gastos'))??[]);
   const [editargasto,setEditargasto]=useState({})
   const [categoriafiltro,setCategoriafiltro]=useState('')
   
@@ -27,6 +27,7 @@ function App() {
   const eliminargasto=(id)=>{
     const nuevosgastos=gastos.filter(gasto=>gasto.id!==id)
     setGastos(nuevosgastos)
+    
   }
  
   const handlemodal=()=>
@@ -51,10 +52,12 @@ function App() {
       })
 
       setGastos(gastoseditado)
+     
      }else{
       gasto.id=generarId();
       gasto.fecha=Date.now()
       setGastos([...gastos,gasto]);
+      
      }
    
    

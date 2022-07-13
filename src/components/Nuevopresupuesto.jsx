@@ -1,8 +1,10 @@
 import React from 'react'
 import {useState} from 'react'
+import { savelocalstorage } from '../helpers'
 import MensajeAlerta from './MensajeAlerta'
 
-const Nuevopresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido}) => {
+
+const Nuevopresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,presupuestoValido}) => {
   const [mensaje,setMensaje]=useState('')
 
  const handlepresupuesto=(e)=>{
@@ -15,6 +17,13 @@ const Nuevopresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido}) => 
     }
       setMensaje('')
       setPresupuestoValido(true)
+      setTimeout(()=>{
+        savelocalstorage('presupuestoValido',true)
+        savelocalstorage('presupuesto',presupuesto)
+      }
+        ,1500)
+   
+      
      };
  
   return (
