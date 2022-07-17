@@ -6,7 +6,8 @@
 this is a bit project on react
 
 ## Preview
-![Cover](https://github.com/Josbor/Josbor/blob/main/presupuesto%202.png)
+[![Cover](https://github.com/Josbor/Josbor/blob/main/presupuesto%202.png)](https://administracion-gastos.netlify.app/)
+
 
 ## Deployed project
 [![MyPublicInbox](https://img.shields.io/badge/Netlify-Click_Here-5CEBDF?style=for-the-badge&logo=netlify&logoColor=5CEBDF&labelColor=101010)](https://administracion-gastos.netlify.app/)
