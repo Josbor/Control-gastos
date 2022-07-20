@@ -9,15 +9,51 @@ import nuevogasto from './img/nuevo-gasto.svg'
 
 
 function App() {
-  const [presupuesto,setPresupuesto]=useState(JSON.parse(localStorage.getItem('presupuesto'))??0);
-  const [presupuestoValido,setPresupuestoValido]=useState(JSON.parse(localStorage.getItem('presupuestoValido'))??false) ;
+  const [presupuesto,setPresupuesto]=useState(
+      Number(localStorage.getItem('presupuesto')??0) 
+  );
+  const [presupuestoValido,setPresupuestoValido]=useState(false) ;
   const [modal,setModal]=useState(false);
   const [animar,setAnimar]=useState(false);
-  const [gastos,setGastos]=useState(JSON.parse(localStorage.getItem('gastos'))??[]);
+  const [gastos,setGastos]=useState(
+    JSON.parse(localStorage.getItem('gastos'))??[]
+    );
   const [editargasto,setEditargasto]=useState({})
   const [categoriafiltro,setCategoriafiltro]=useState('')
+
+  useEffect(()=>{
+   if (presupuesto>0){
+    setPresupuestoValido(true)
+   }
+
+  },[])
   
 
+  
+  useEffect(() => {
+    localStorage.setItem('presupuesto',presupuesto??0)
+  }, [presupuesto]);
+
+  useEffect(() => {
+    localStorage.setItem('gastos',JSON.stringify(gastos??[]))
+  }, [gastos]);
+
+
+  
+  
+  const handlereset=()=>{
+    // resetea valor del presupuesto
+    const mensaje =confirm('¿Desea resetear la aplicacion?')
+    if (mensaje){
+      setPresupuesto(0)
+      setPresupuestoValido(false)
+      setGastos([])
+      console.log('App reseteada exitosamente')
+    }
+    
+  
+    
+      }
   useEffect(() => {
    if(Object.keys(editargasto).length > 0){
     handlemodal()
@@ -72,6 +108,7 @@ function App() {
            setPresupuestoValido={setPresupuestoValido}
            presupuestoValido={presupuestoValido}
            gastos={gastos}
+           handlereset={handlereset}
            />
 
            

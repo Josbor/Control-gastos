@@ -3,7 +3,7 @@ import ControlPresupuesto from './ControlPresupuesto'
 import Nuevopresupuesto from './Nuevopresupuesto'
 
 
-const Headerpresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,presupuestoValido,gastos}) => {
+const Headerpresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,presupuestoValido,gastos,handlereset}) => {
  
   
   return (
@@ -15,6 +15,7 @@ const Headerpresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,pres
      <ControlPresupuesto
      presupuesto={presupuesto}
      gastos= {gastos}
+     handlereset={handlereset}
      />://este es un ternario 
      <Nuevopresupuesto
       presupuesto={presupuesto}

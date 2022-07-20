@@ -1,6 +1,6 @@
+import { number } from 'prop-types'
 import React from 'react'
 import {useState} from 'react'
-import { savelocalstorage } from '../helpers'
 import MensajeAlerta from './MensajeAlerta'
 
 
@@ -9,7 +9,7 @@ const Nuevopresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,presu
 
  const handlepresupuesto=(e)=>{
     e.preventDefault()
-    
+    setPresupuesto(Number(presupuesto))
     if(!presupuesto||presupuesto<=0){
       setMensaje("no es un presupuesto valido")
       setPresupuestoValido(false)
@@ -17,11 +17,7 @@ const Nuevopresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,presu
     }
       setMensaje('')
       setPresupuestoValido(true)
-      setTimeout(()=>{
-        savelocalstorage('presupuestoValido',true)
-        savelocalstorage('presupuesto',presupuesto)
-      }
-        ,1500)
+     
    
       
      };
@@ -31,12 +27,12 @@ const Nuevopresupuesto = ({presupuesto,setPresupuesto,setPresupuestoValido,presu
       <form className='formulario' onSubmit={handlepresupuesto}>
             <div className='campo'>
             <label>Definir Presupuesto </label>
-            <input className=' nuevo-presupuesto'
-                   id='presu-text'
-                   type="Number" 
+            <input 
+                   
+                   type="number" 
                    placeholder='ingresa un valor'
                    value={presupuesto}
-                   onChange={e=>setPresupuesto(Number(e.target.value))}
+                   onChange={e=>setPresupuesto(e.target.value)}
                    />
                    
 

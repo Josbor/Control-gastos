@@ -1,10 +1,10 @@
 import React, { useEffect,useState } from 'react'
-import { formatomoneda,savelocalstorage } from '../helpers'
-import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
+import {formatomoneda} from '../helpers'
+import {CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css'
 
 
-const ControlPresupuesto = ({presupuesto,gastos}) => {
+const ControlPresupuesto = ({presupuesto,gastos,handlereset}) => {
   const [disponible,setDisponible]=useState(0)
   const [gastado,setGastado]=useState(0)
   const[porcentaje,setPorcentaje]=useState('')
@@ -19,7 +19,7 @@ const ControlPresupuesto = ({presupuesto,gastos}) => {
             {setPorcentajecolor('#CEF650')}
           else if (valor>50&&valor<=75)
             {setPorcentajecolor('#F6E750')}
-          else if (valor>75&&valor<=100)
+          else if (valor>75)
             {setPorcentajecolor('#F65050')}
           else
             {setPorcentajecolor('#50f690')}
@@ -30,16 +30,16 @@ const ControlPresupuesto = ({presupuesto,gastos}) => {
         const totaldisponible=presupuesto-totalgastado;
         setDisponible(totaldisponible)
         setGastado(totalgastado)
-        const calculo=(totalgastado*100)/presupuesto
+        const calculo=((totalgastado*100)/presupuesto).toFixed(2)
          
         setTimeout(() => {
           colores(calculo);
           setPorcentaje(calculo)
-        }, 1000);
-        savelocalstorage('gastos',gastos);
+        },1000);
+      
     },[gastos]);
  
-  
+    
     return (
     <div className=' contenedor-presupuesto  contenedor sombra dos-columnas'>
       <div>
@@ -51,6 +51,8 @@ const ControlPresupuesto = ({presupuesto,gastos}) => {
        />
       </div>
       <div className='contenido-presupuesto'>
+        <button className='reset-app' type="button" onClick={handlereset} >Resetear App</button>
+        
         <p>
             <span>Presupuesto :</span> {formatomoneda(presupuesto)}
         </p>

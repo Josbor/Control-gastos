@@ -1,8 +1,8 @@
 :root {
-    --azul: #9350f6;
+    --azul: #6385ff;
     --blanco: #ffffff;
-    --gris-claro: #f5eeee;
-    --gris: #94a3b8;
+    --gris-claro: #f3f3f3;
+    --gris: #aeaeae;
     --gris-oscuro: #64748b;
     --negro: #000;
 }
@@ -56,6 +56,17 @@ header h1 {
     text-transform: uppercase;
 }
 
+@media (max-width: 450px) {
+   header h1{ 
+     font-size: 1.8em;
+   } 
+   .campo input {
+        text-align: center;
+   }
+   
+
+}
+
 .formulario {
     width: 95%;
     margin: 0 auto;
@@ -89,6 +100,7 @@ header h1 {
     margin-bottom: 2rem;
 }
 
+
 .formulario input[type="text"],
 .formulario input[type="number"] {
     background-color: var(--gris-claro);
@@ -97,6 +109,7 @@ header h1 {
     border: none;
     flex: 1;
     font-size: 1.6rem;
+    text-align: center;
 }
 .formulario input[type="submit"] {
     background-color: #1048a4;
@@ -116,6 +129,7 @@ header h1 {
         display: block;
         padding: 1rem 5rem;
     }
+    
 }
 .formulario input[type="submit"]:hover {
     background-color: #042a67;
@@ -403,4 +417,130 @@ body .modal {
     align-items: center;
     font-size: 2.4rem;
     text-align: right;
+}
+
+
+/* MEDIAS QUERYS FOR FORMAT MOBILE*/
+@media (max-width:450px){
+
+    .formulario{
+        padding-bottom:0.5em;
+        padding-top:0.5em;
+    }
+    .formulario label{
+        font-size: 1.6em;
+        
+       }
+       .formulario input[type="submit"]{
+       margin-top: 0;
+    }   
+
+
+    .modal .formulario {
+        margin-top: 5em;
+        max-width: 60rem;
+        width: 30rem;
+      
+       
+        
+    }
+   
+
+     .contenedor-presupuesto div{
+        margin-bottom: 0;
+     }
+    
+     .dos-columnas :first-child{
+        margin-bottom: 1em;
+      }
+
+      .contenedor-presupuesto svg {
+        width: 20rem;
+    }
+
+    .contenido-presupuesto p {
+        margin-block-start: 0.5em;
+        margin-block-end: 0.5em;
+        font-size: 2rem;
+        text-align: center;
+    }
+    h2{
+        margin-left: 2em;
+    }
+    .filtros label {
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--gris-oscuro);
+    }
+    .filtros select {
+        flex: 1;
+        padding: 1rem;
+        border: none;
+        border-radius: 1rem;
+        text-align: center;
+        background-color: var(--gris-claro);
+    }
+
+    .gasto {
+        padding: 1em;
+    }
+    .contenido-gasto img{
+        width: 4em;
+    }
+    .descripcion-gasto .nombre-gasto {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin: 0;
+        
+    }
+
+    .cantidad-gasto {
+        font-size: 2.2rem;
+        color: var(--negro);
+        font-weight: 900;
+    }
+    .descripcion-gasto .fecha-gasto {
+        font-size: 1.3rem;
+        font-weight: 900;
+        margin-bottom: 0;
+       
+    }
+    .descripcion-gasto .categoria {
+        color: var(--gris);
+        font-size: 1.5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom:0.3em;
+        margin-top: 0.3em;
+    }
+    .filtros{
+        padding:1em;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+@media (max-width:300px) {
+    .formulario label{
+        font-size: 1.3em;
+        
+       }
+       .modal .formulario {
+        margin-top: 5em;
+        max-width: 30rem;
+        width: 25rem;
+      }
+      .modal legend{
+        font-size: 2em;
+      }
+      .modal option{
+        font-size: 1em;
+      }
+    
+      .dos-columnas :first-child{
+        margin-bottom: 1em;
+      }
+      
+
+
+}
 }

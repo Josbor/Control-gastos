@@ -25,6 +25,16 @@ const Modal = ({animar,
     const [id,setId]=useState('');
     const [alerta,setAlerta]=useState('');
                   
+    useEffect(() => {
+      if(Object.keys(editargasto).length > 0){
+          setNombre(editargasto.nombre)
+          setCantidad(editargasto.cantidad)
+          setCategoria(editargasto.categoria)
+          setFecha(editargasto.fecha)
+          setId(editargasto.id)
+       }
+    }, []);
+
     const handlecerrar=()=>{
         
         setAnimar(false);
@@ -34,15 +44,7 @@ const Modal = ({animar,
         },500)
     }
 
-    useEffect(() => {
-      if(Object.keys(editargasto).length > 0){
-          setNombre(editargasto.nombre)
-          setCantidad(editargasto.cantidad)
-          setCategoria(editargasto.categoria)
-          setFecha(editargasto.fecha)
-          setId(editargasto.id)
-       }
-    }, [editargasto]);
+ 
 
     const handlegasto=(e)=>{
       e.preventDefault()
@@ -72,7 +74,7 @@ const Modal = ({animar,
                  />
            </div>
            <form  className={`formulario ${animar?'animar':'cerrar'}`} onSubmit={handlegasto}>
-              <legend>Nuevo Gasto</legend>
+              <legend>{id?'Editar Gasto':'Nuevo Gasto'}</legend>
               {alerta&&<MensajeAlerta tipo='error'>{alerta}</MensajeAlerta>}
               <div className='campo'>
                 <label htmlFor='nombre' >Nombre Gasto</label>
@@ -96,7 +98,7 @@ const Modal = ({animar,
                 </select>
               </div>
               <div>
-              <input type="submit" value="añadir Gasto" />
+              <input type="submit" value={id?"Editar Gasto":"Añadir Gasto"} />
               </div>
               
             
