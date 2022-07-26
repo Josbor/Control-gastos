@@ -24,6 +24,7 @@ html {
 
 .fijar {
     overflow: hidden;
+    position:fixed;
     height: 100vh;
 }
 
@@ -517,6 +518,11 @@ body .modal {
         padding:1em;
         margin-top: 0;
         margin-bottom: 0;
+    }
+    .fijar {
+        display: block;
+        overflow-y: Inherited;
+        height: 100%;
     }
 
 @media (max-width:300px) {
